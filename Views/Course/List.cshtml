@@ -1,0 +1,29 @@
+﻿@model aspnetmvcdemo.Models.CourseViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List of Courses</title>
+</head>
+<body>
+    <table class="table" border="1">
+        <tr>
+            <th>@Html.LabelFor(m => m.Courses, labelText: "Course")</th>
+        </tr>
+        @foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+        }
+
+    </table>
+    <h3>Trainer: @Model.Trainer</h3>
+</body>
+</html>

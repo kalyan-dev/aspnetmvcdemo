@@ -1,0 +1,60 @@
+﻿@model aspnetmvcdemo.Models.Person
+@{
+    ViewBag.Title = "Greet";
+}
+
+<h2>Greet</h2>
+
+<h2>Hello @Model.firstName @Model.lastName, How are you?  </h2>
+
+<h2>Razor Examples</h2>
+
+@{
+    var msg = "Good Morning";
+}
+<h3>@msg</h3>
+
+<!--Multi Statement block-->
+
+
+
+@{ if (DateTime.Now.Hour > 12)
+    {
+        msg = "Good Evening";
+
+    }
+    else
+    {
+        msg = "Good Morning";
+    }
+
+}
+@{
+    var t = DateTime.Now;
+    var greetMsg = msg + ", Now the time is:" + t;
+
+}
+<h3>@greetMsg</h3>
+
+<!--Taking User input-->
+<h2>Taking User input</h2>
+@{       
+    var totalMsg = "";
+    if (IsPost) {
+
+        var text1 = Request["Text1"];
+        var num2 = Request["Num2"];
+        var total = text1.AsInt() + num2.AsInt();
+        totalMsg = "Total: " + total;
+    }
+
+
+
+}
+
+<h2>Request.ServerVariables</h2>
+@foreach (var v in Request.ServerVariables)
+{
+                <li>@v</li>
+            }
+

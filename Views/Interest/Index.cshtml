@@ -1,0 +1,59 @@
+﻿@model aspnetmvcdemo.Models.Interest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Interest Calculation</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.amount, labelText: "Deposit Amount")
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group">
+                @Html.LabelFor(model => model.rate, labelText: "Interest Rate")
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Calculate Interest" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+   <h2>@ViewBag.msg</h2>
+
+    @if (Model.interest > 0)
+    {
+        <div>
+            <h2>Interest= @Model.interest</h2>
+        </div>
+    }
+</body>
+</html>

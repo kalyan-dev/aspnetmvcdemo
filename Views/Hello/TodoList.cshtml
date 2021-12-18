@@ -1,0 +1,20 @@
+﻿@model aspnetmvcdemo.Models.TodoList
+
+@{
+    ViewBag.Title = "TodoList";
+}
+
+
+<h2>TodoList</h2>
+
+@for(var i=0;i<Model.getList().Count;i++)
+{
+    <li>@Model.getList()[i]</li>
+}
+
+<p></p>
+<h2>To do list</h2>
+@foreach(var i in Model.todoList)
+            {
+                <li>@i</li>
+            }
